@@ -1,0 +1,11 @@
+# Local Python environment (recreated with: pip install -r requirements.txt)
+.venv/
+__pycache__/
+
+# Local Claude Code settings (contain machine-specific paths; keep private)
+.claude/settings.local.json
+.claude/launch.json
+
+# macOS / Office temp files
+.DS_Store
+~$*
