@@ -1,0 +1,458 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Northwind Business Analysis</title>
+<meta name="description" content="Seven business questions answered from the Northwind sales data, July 1996 – May 1998.">
+<style>
+  :root {
+    --ink: #0b0b0b; --ink2: #52514e; --muted: #898781;
+    --line: #e1e0d9; --surface: #fcfcfb; --panel: #f4f3ee;
+    --blue: #2a78d6; --orange: #eb6834; --aqua: #1baf7a;
+    --measure: 46rem;
+  }
+  * { box-sizing: border-box; }
+  html { scroll-behavior: smooth; }
+  body {
+    margin: 0; background: var(--surface); color: var(--ink);
+    font: 17px/1.6 -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto,
+          "Helvetica Neue", Arial, sans-serif;
+  }
+  .wrap { max-width: var(--measure); margin: 0 auto; padding: 0 16px; }
+  header { padding: 56px 0 24px; border-bottom: 1px solid var(--line); }
+  .eyebrow { font-size: 13px; letter-spacing: .08em; text-transform: uppercase;
+             color: var(--ink2); margin: 0 0 8px; }
+  h1 { font-size: 2.1rem; line-height: 1.2; margin: 0 0 12px; }
+  .lede { font-size: 1.1rem; color: var(--ink2); margin: 0 0 16px; }
+  .meta { font-size: 14px; color: var(--ink2); margin: 0; }
+  a { color: var(--blue); }
+  h2 { font-size: 1.45rem; line-height: 1.3; margin: 0 0 4px; }
+  h3 { font-size: .8rem; letter-spacing: .07em; text-transform: uppercase;
+       color: var(--ink2); margin: 22px 0 4px; }
+  section { padding: 40px 0; border-bottom: 1px solid var(--line); }
+  .qnum { font-size: 13px; font-weight: 700; color: var(--orange); margin: 0 0 6px;
+          letter-spacing: .06em; }
+  p { margin: 0 0 12px; }
+  ul { margin: 0 0 12px; padding-left: 1.2em; }
+  li { margin-bottom: 4px; }
+  figure { margin: 18px 0 8px; }
+  figure img { width: 100%; height: auto; display: block;
+               border: 1px solid var(--line); border-radius: 6px; background: #fff; }
+  figcaption { font-size: 13px; color: var(--ink2); margin-top: 6px; }
+  .finding { background: var(--panel); border-left: 3px solid var(--blue);
+             padding: 12px 16px; border-radius: 0 6px 6px 0; margin: 12px 0; }
+  .finding p:last-child, .implication p:last-child { margin-bottom: 0; }
+  .implication { border-left: 3px solid var(--aqua); padding: 4px 16px; margin: 12px 0; }
+  .caveat { font-size: 14px; color: var(--ink2); }
+  .summary { list-style: none; padding: 0; margin: 0; }
+  .summary li { padding: 10px 0; border-top: 1px solid var(--line); }
+  .summary li:first-child { border-top: 0; }
+  .summary a { font-weight: 600; text-decoration: none; }
+  .summary a:hover { text-decoration: underline; }
+  .tablewrap { overflow-x: auto; margin: 12px 0; }
+  table { border-collapse: collapse; width: 100%; font-size: 14px;
+          font-variant-numeric: tabular-nums; }
+  th, td { text-align: left; padding: 6px 10px; border-bottom: 1px solid var(--line);
+           white-space: nowrap; }
+  th { color: var(--ink2); font-weight: 600; }
+  td.num, th.num { text-align: right; }
+  footer { padding: 32px 0 64px; font-size: 14px; color: var(--ink2); }
+  code { font-size: .9em; background: var(--panel); padding: 1px 5px; border-radius: 4px; }
+  @media (max-width: 560px) {
+    body { font-size: 16px; }
+    h1 { font-size: 1.7rem; }
+    header { padding-top: 36px; }
+  }
+</style>
+</head>
+<body>
+
+<header>
+  <div class="wrap">
+    <p class="eyebrow">Northwind Traders · Sales data, Jul 1996 – May 1998</p>
+    <h1>What the Northwind sales data says about pricing, growth, and risk</h1>
+    <p class="lede">Seven questions a manager would ask, each answered with the
+      evidence behind it, what it means, and how sure we can be.</p>
+    <p class="meta">830 orders · 2,155 order lines · 89 active customers in 21
+      countries · 77 products. Code and data:
+      <a href="https://github.com/MitsuakiK/mitsuaki-15561-hw3">GitHub repository</a>.</p>
+  </div>
+</header>
+
+<main class="wrap">
+
+<section id="summary">
+  <h2>Summary for the manager</h2>
+  <ul class="summary">
+    <li><a href="#q1">Q1 Price increase</a>: The 25% price increase in April 1997
+      did not reduce unit sales, and revenue rose. Unit growth did stall for
+      about 8 months afterward.</li>
+    <li><a href="#q2">Q2 Growth drivers</a>: Revenue in Jan–Apr 1998 nearly doubled.
+      Almost all of that came from existing customers ordering more often, not
+      from new customers.</li>
+    <li><a href="#q3">Q3 Rush orders</a>: Orders with a 14-day deadline are shipped
+      late 18% of the time, against 4% for normal orders. They get no priority.</li>
+    <li><a href="#q4">Q4 Discounts</a>: Discounted lines are bigger, but a 25%
+      discount buys no more volume than a 5% one.</li>
+    <li><a href="#q5">Q5 Country markets</a>: Most countries are growing. Each
+      declining country comes down to one or two customers.</li>
+    <li><a href="#q6">Q6 At-risk customers</a>: 8 regular customers ($52k, or 6%
+      of yearly revenue) have gone quiet. They are worth a call.</li>
+    <li><a href="#q7">Q7 Concentration</a>: The top 3 customers bring 25% of
+      revenue, and one wine brings 11%. The overall risk is moderate, but the
+      top accounts need care.</li>
+  </ul>
+</section>
+
+<!-- Q1 -->
+<section id="q1">
+  <p class="qnum">QUESTION 1</p>
+  <h2>Did the 25% across-the-board price increase in April 1997 reduce demand?</h2>
+
+  <h3>Why it matters</h3>
+  <p>Raising prices is the fastest way to raise revenue, but only if customers
+    keep buying. How Northwind's customers reacted last time is the best guide
+    to the next price decision.</p>
+
+  <h3>Approach</h3>
+  <p>The data shows that every order line before 7 April 1997 was sold at 80% of
+    today's list price, and every line from that date on at 100%. That is one
+    25% increase on one day. I compared units sold in equal windows of 60, 90
+    and 180 days before and after the change. I checked whether the same
+    customers bought less, and compared actual monthly units with the trend of
+    the 9 months before the change.</p>
+
+  <figure>
+    <img src="outputs/figures/q1_units_price_change.png"
+         alt="Line chart of monthly units sold, July 1996 to April 1998, with a vertical line at April 1997. Units stay near the earlier level after the increase, fall below the earlier upward trend until November 1997, then rise sharply." loading="lazy">
+    <figcaption>Monthly units sold. The gray band is the pre-change trend ±2 standard deviations.</figcaption>
+  </figure>
+
+  <div class="finding">
+    <p><strong>Finding.</strong> Demand did not drop. In the 180 days after the
+      increase, units were up 2% (11,848 → 12,084) and revenue up 17%. The 54
+      customers who bought in both periods bought 4.6% more units (Wilcoxon
+      p = 0.49, so there is no significant change). Discounts were not raised to
+      make up for it (the average fell from 6.2% to 5.8%). However, unit growth
+      paused. From April to November 1997, units were 24% below the earlier
+      upward trend, and growth resumed in December.</p>
+  </div>
+  <div class="implication">
+    <p><strong>Business implication.</strong> The price increase appears to have
+      been absorbed and lifted revenue. Because growth paused afterward, the next
+      price change should be tried on part of the product range first, so its
+      effect can actually be measured.</p>
+  </div>
+  <p class="caveat">Caution: there is no comparison group, and the trend rests
+    on only 9 months, so the data cannot show whether the price increase caused
+    the pause.</p>
+</section>
+
+<!-- Q2 -->
+<section id="q2">
+  <p class="qnum">QUESTION 2</p>
+  <h2>What drove revenue growth in early 1998: more customers, more frequent orders, or bigger orders?</h2>
+
+  <h3>Why it matters</h3>
+  <p>Each source of growth calls for a different plan. More customers points to
+    marketing, more frequent orders to account management, and bigger orders to
+    pricing and bundles. It also shows whether the growth is likely to last.</p>
+
+  <h3>Approach</h3>
+  <p>I split revenue into three parts that multiply together: active customers ×
+    orders per customer × revenue per order. I compared the same calendar months
+    one year apart, valuing all sales at current list prices so the April 1997
+    price increase does not inflate the growth. Then I traced the change to
+    individual customers. Checks: two other time windows, removing the 3
+    biggest contributors, and removing the largest 1% of orders.</p>
+
+  <figure>
+    <img src="outputs/figures/q2_growth_decomposition.png"
+         alt="Grouped bar chart for three year-over-year comparisons. Orders per customer rises the most in each, active customers rise less, and revenue per order falls slightly." loading="lazy">
+    <figcaption>Change in each growth factor versus the same months a year earlier, at constant prices.</figcaption>
+  </figure>
+
+  <div class="finding">
+    <p><strong>Finding.</strong> Jan–Apr 1998 revenue was 1.86× that of Jan–Apr
+      1997 at constant prices (2.21× at actual prices). Orders per customer rose
+      from 1.89 to 3.20 (1.69×). Active customers rose from 65 to 80 (1.23×), and
+      revenue per order fell to 0.89×. Order frequency explains about 85% of the
+      growth. Of the 21 customers who ordered in early 1998 but not in early 1997,
+      only one was truly new. The pattern holds without the top 3 customers
+      (+67%) and without the largest orders (1.88×).</p>
+  </div>
+  <div class="implication">
+    <p><strong>Business implication.</strong> Growth comes from existing accounts
+      buying more often, which is good for loyalty. But Northwind has gained almost
+      no new customers since mid-1997, and smaller, more frequent orders raise
+      handling and shipping work. A deliberate plan to win new customers is the gap.</p>
+  </div>
+</section>
+
+<!-- Q3 -->
+<section id="q3">
+  <p class="qnum">QUESTION 3</p>
+  <h2>Are orders with a short 14-day deadline handled any faster?</h2>
+
+  <h3>Why it matters</h3>
+  <p>Customers who ask for a short deadline are telling us that timing matters to
+    them. Missing it puts some of the larger orders at risk.</p>
+
+  <h3>Approach</h3>
+  <p>Every order has a required date 14, 28 or 42 days after the order date. For
+    shipped orders, I compared how often each group shipped after its required
+    date and how long shipping took. To rule out other explanations, I repeated
+    the comparison within each shipper, year and employee. I also ran a
+    permutation test that keeps shipper and year fixed.</p>
+
+  <figure>
+    <img src="outputs/figures/q3_ship_days_by_deadline.png"
+         alt="Step chart of the cumulative share of orders shipped by day. The 14-day and 28-day lines nearly overlap. At day 14 only about 82 percent of 14-day orders have shipped." loading="lazy">
+    <figcaption>Share of orders shipped by each day after ordering, by deadline.</figcaption>
+  </figure>
+
+  <div class="tablewrap">
+    <table>
+      <thead><tr><th>Deadline</th><th class="num">Orders</th><th class="num">Shipped late</th>
+        <th class="num">Late rate</th><th class="num">Median days to ship</th></tr></thead>
+      <tbody>
+        <tr><td>14 days</td><td class="num">68</td><td class="num">12</td><td class="num">17.6%</td><td class="num">7.5</td></tr>
+        <tr><td>28 days</td><td class="num">682</td><td class="num">25</td><td class="num">3.7%</td><td class="num">7.0</td></tr>
+        <tr><td>42 days</td><td class="num">59</td><td class="num">0</td><td class="num">0.0%</td><td class="num">7.0</td></tr>
+      </tbody>
+    </table>
+  </div>
+
+  <div class="finding">
+    <p><strong>Finding.</strong> 14-day orders ship no faster than others (median
+      7.5 vs 7.0 days), so 17.6% of them miss their deadline, against 3.7% of
+      28-day orders (Fisher exact test p = 0.00004). The gap appears for every
+      shipper and every year (permutation test p = 0.0002). 14-day orders are 8%
+      of shipped orders but 32% of late ones, and they are larger than average
+      ($1,969 vs $1,497).</p>
+  </div>
+  <div class="implication">
+    <p><strong>Business implication.</strong> The warehouse appears to work in
+      order of arrival and ignore deadlines. A simple rule, such as flagging
+      14-day orders for priority picking, could prevent most of these late
+      shipments at little cost.</p>
+  </div>
+  <p class="caveat">"Late" means shipped after the required date. Actual delivery
+    dates are not in the data.</p>
+</section>
+
+<!-- Q4 -->
+<section id="q4">
+  <p class="qnum">QUESTION 4</p>
+  <h2>Do deeper discounts buy larger orders or more repeat business?</h2>
+
+  <h3>Why it matters</h3>
+  <p>Discounts cost Northwind $89k in this period. If deeper discounts don't
+    bring more business, part of that money is wasted.</p>
+
+  <h3>Approach</h3>
+  <p>Products differ in typical order size, so I compared each order line with
+    the usual undiscounted quantity of the same product ("relative quantity").
+    I compared this across the standard rates of 0–25% with bootstrap intervals
+    and rank-based tests, and checked each year separately. I also checked
+    whether customers reorder sooner after a discounted order, including within
+    the same customer.</p>
+
+  <figure>
+    <img src="outputs/figures/q4_quantity_by_discount.png"
+         alt="Dot chart of mean relative quantity by discount rate with 95 percent intervals. 0 percent is about 1.25; all rates from 5 to 25 percent sit between about 1.5 and 1.7 with overlapping intervals." loading="lazy">
+    <figcaption>Order-line quantity relative to the product's usual undiscounted quantity, by discount rate (95% bootstrap intervals).</figcaption>
+  </figure>
+
+  <div class="finding">
+    <p><strong>Finding.</strong> Discounted lines are about 30% larger than
+      undiscounted ones. But among discounted lines the rate makes no difference.
+      A 25% line is the same size as a 5% line (Kruskal-Wallis p = 0.34), and
+      this holds in every year. The 20% and 25% rates cost $55k of the $89k given
+      away. Customers reorder within 90 days after 83% of discounted orders,
+      against 64% after other orders. Frequent buyers get more discounts, though,
+      and within the same customer the gap shrinks to 78% vs 66% (p = 0.049).</p>
+  </div>
+  <div class="implication">
+    <p><strong>Business implication.</strong> Offering some discount goes along
+      with larger orders and return visits, but deeper discounts show no extra
+      benefit. A trial cap at 10% is worth running. If quantities stayed the
+      same, it would have saved about $36k (a hypothesis, not tested).</p>
+  </div>
+  <p class="caveat">All results are associations. Discounts were not assigned
+    at random, so this data cannot prove what a discount causes.</p>
+</section>
+
+<!-- Q5 -->
+<section id="q5">
+  <p class="qnum">QUESTION 5</p>
+  <h2>Which country markets are growing or shrinking, and where should sales attention go?</h2>
+
+  <h3>Why it matters</h3>
+  <p>Sales effort is limited. Knowing which markets are growing and why tells the
+    manager where to invest and where to step in.</p>
+
+  <h3>Approach</h3>
+  <p>For each country (the ordering customer's country), I compared revenue in
+    Jan–Apr 1998 with Jan–Apr 1997 at constant prices. I checked the result
+    against two other time windows, flagged countries with fewer than 10 orders
+    as small samples, and broke each declining country down by customer.</p>
+
+  <figure>
+    <img src="outputs/figures/q5_country_change.png"
+         alt="Horizontal bar chart of revenue change by country. USA, Germany and Brazil have the largest gains; Denmark, Canada, Finland and Mexico show small declines." loading="lazy">
+    <figcaption>Change in revenue by country, Jan–Apr 1998 vs Jan–Apr 1997, constant prices.</figcaption>
+  </figure>
+
+  <div class="finding">
+    <p><strong>Finding.</strong> The largest gains are the USA (+$46.8k),
+      Germany (+$44.1k) and Brazil (+$29.0k). The top 4 countries make up 71% of
+      the total gain, and 15 of 21 countries grew in all three comparisons. Every
+      decline traces to one or two customers. Denmark had one large order from
+      Simons bistro in Jan 1997, Canada's Mère Paillarde stopped ordering after
+      Oct 1997, and the declines in Finland and Mexico are each due to a single
+      customer. In 6 countries, one customer makes up at least 70% of the
+      country's revenue.</p>
+  </div>
+  <div class="implication">
+    <p><strong>Business implication.</strong> With so few customers per country,
+      country is too coarse a unit for decisions. Attention to individual
+      accounts (see Q6) matters more than a market-level strategy.</p>
+  </div>
+</section>
+
+<!-- Q6 -->
+<section id="q6">
+  <p class="qnum">QUESTION 6</p>
+  <h2>Which valuable customers are going quiet and may be lost?</h2>
+
+  <h3>Why it matters</h3>
+  <p>Keeping a customer costs far less than winning a new one, and Q2 showed
+    that new customers have been rare. Spotting customers who are drifting
+    away, while there is still time to act, protects the revenue base.</p>
+
+  <h3>Approach</h3>
+  <p>Each customer has their own ordering rhythm, so a fixed "90 days" rule
+    would be unfair. I flagged customers with at least 3 orders who have been
+    silent for at least twice their usual (median) gap between orders and at
+    least 60 days. I tested how the list changes with other thresholds. I also
+    backtested the rule at three earlier dates to see whether flagged customers
+    really stopped ordering.</p>
+
+  <figure>
+    <img src="outputs/figures/q6_at_risk_customers.png"
+         alt="Scatter plot of days since last order against each customer's usual gap between orders. Eight orange bubbles above the threshold line are labeled with company names; Mère Paillarde is far above the line." loading="lazy">
+    <figcaption>Each bubble is a customer. Bubble size is revenue in the last 12 months.</figcaption>
+  </figure>
+
+  <div class="tablewrap">
+    <table>
+      <thead><tr><th>Customer</th><th>Country</th><th class="num">Usual gap (days)</th>
+        <th class="num">Days silent</th><th class="num">× usual</th><th class="num">12-month revenue</th></tr></thead>
+      <tbody>
+        <tr><td>Berglunds snabbköp</td><td>Sweden</td><td class="num">26</td><td class="num">63</td><td class="num">2.4</td><td class="num">$16,204</td></tr>
+        <tr><td>Mère Paillarde</td><td>Canada</td><td class="num">17.5</td><td class="num">188</td><td class="num">10.7</td><td class="num">$12,912</td></tr>
+        <tr><td>Seven Seas Imports</td><td>UK</td><td class="num">29</td><td class="num">91</td><td class="num">3.1</td><td class="num">$7,170</td></tr>
+        <tr><td>Victuailles en stock</td><td>France</td><td class="num">19</td><td class="num">103</td><td class="num">5.4</td><td class="num">$5,828</td></tr>
+        <tr><td>Blondel père et fils</td><td>France</td><td class="num">42.5</td><td class="num">114</td><td class="num">2.7</td><td class="num">$4,715</td></tr>
+        <tr><td>Familia Arquibaldo</td><td>Brazil</td><td class="num">63.5</td><td class="num">187</td><td class="num">2.9</td><td class="num">$2,377</td></tr>
+        <tr><td>Hungry Coyote Import Store</td><td>USA</td><td class="num">37.5</td><td class="num">240</td><td class="num">6.4</td><td class="num">$2,181</td></tr>
+        <tr><td>Vins et alcools Chevalier</td><td>France</td><td class="num">27</td><td class="num">175</td><td class="num">6.5</td><td class="num">$380</td></tr>
+      </tbody>
+    </table>
+  </div>
+
+  <div class="finding">
+    <p><strong>Finding.</strong> As of 6 May 1998, 8 customers meet the rule.
+      Together they account for $51.8k, or 6.0% of the last 12 months' revenue.
+      The list hardly changes with other thresholds (7–8 customers). In the
+      backtest, flagged customers still reordered within 120 days 58–87% of the
+      time, against 80–93% for other customers. Silence is a warning sign, not
+      proof of loss.</p>
+  </div>
+  <div class="implication">
+    <p><strong>Business implication.</strong> Use the list for a low-cost
+      check-in call, starting with the largest accounts. Mère Paillarde, silent
+      for more than 10 times its usual gap, is the clearest case.</p>
+  </div>
+</section>
+
+<!-- Q7 -->
+<section id="q7">
+  <p class="qnum">QUESTION 7</p>
+  <h2>How dependent is revenue on a few customers and a single product?</h2>
+
+  <h3>Why it matters</h3>
+  <p>If a few accounts or one product carry the business, losing one of them is
+    a serious risk. Knowing the size of that risk guides how much to spend on
+    keeping key accounts and backup suppliers.</p>
+
+  <h3>Approach</h3>
+  <p>I measured the share of revenue held by the top customers and products,
+    and the Herfindahl-Hirschman Index (HHI), a standard concentration measure.
+    I tracked both by half-year and estimated how much revenue would be lost
+    with the top accounts in the last 12 months.</p>
+
+  <figure>
+    <img src="outputs/figures/q7_concentration_curve.png"
+         alt="Cumulative revenue curves for customers and products against a diagonal 'perfectly even' line. The top 10 percent of customers hold about 43 percent of revenue." loading="lazy">
+    <figcaption>Cumulative share of revenue, largest customers or products first.</figcaption>
+  </figure>
+
+  <div class="finding">
+    <p><strong>Finding.</strong> The top 3 customers (QUICK-Stop, Ernst Handel,
+      Save-a-lot Markets) bring 25% of revenue, and the top 10% of customers
+      bring 43%. Overall concentration is low (customer HHI 337, well under the
+      common 1,500 threshold) and is not rising. The top-3 share by half-year was
+      18%, 24%, 30% and 25%. One wine, Côte de Blaye, is 11.2% of all revenue
+      from only 24 order lines. Losing the top customer would remove 9.6% of the
+      last 12 months' revenue, and losing the top 3 would remove 27.3%.</p>
+  </div>
+  <div class="implication">
+    <p><strong>Business implication.</strong> The risk is moderate overall but
+      real at the top. Dedicated care for the top 3 accounts, and a backup for
+      Côte de Blaye's single supplier, are prudent steps.</p>
+  </div>
+</section>
+
+<section id="method">
+  <h2>Data, methods, and limitations</h2>
+  <h3>Data handling</h3>
+  <ul>
+    <li>Revenue = unit price × quantity × (1 − discount), from the order lines.
+      Where the April 1997 price increase would distort a comparison, sales are
+      valued at current list prices ("constant prices").</li>
+    <li>The data runs from 4 July 1996 to 6 May 1998. Comparisons use the same
+      calendar months in each year, and the partial May 1998 is left out of
+      monthly trends.</li>
+    <li>Extra columns in the Product sheet that are not part of the original
+      database were ignored. Country means the customer's country, not the
+      ship-to address.</li>
+  </ul>
+  <h3>Verification</h3>
+  <p>Eight key numbers were recomputed by hand in Excel, including total
+    revenue, the Q1 unit counts, the Q3 late orders and the Q7 top-customer
+    revenue. All matched.</p>
+  <h3>Limitations</h3>
+  <ul>
+    <li>Northwind is a fictional teaching dataset. Patterns such as the
+      single-day 25% price step and the round discount rates may come from how
+      the data was generated.</li>
+    <li>The data covers only 22 months.</li>
+    <li>All findings are associations, not proven causes.</li>
+  </ul>
+  <h3>Reproduce</h3>
+  <p>All numbers, charts and tables come from <code>python run_all.py</code> in the
+    <a href="https://github.com/MitsuakiK/mitsuaki-15561-hw3">GitHub repository</a>.
+    See its README for step-by-step instructions.</p>
+</section>
+
+</main>
+
+<footer>
+  <div class="wrap">MIT 15.561 · HW3 · Analysis in Python (pandas, SciPy, matplotlib).</div>
+</footer>
+
+</body>
+</html>

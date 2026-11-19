@@ -1,0 +1,113 @@
+
+========================================================================
+Q5.1 Country revenue change at constant prices
+========================================================================
+             rev_before  orders_before  cust_before  rev_after  orders_after  cust_after    change  growth  small_sample
+Country                                                                                                                 
+USA            37896.32           12.0          7.0   84707.80            35          11  46811.48    1.24         False
+Germany        31765.61           17.0          8.0   75840.50            32          11  44074.89    1.39         False
+Brazil         13758.85           12.0          8.0   42808.69            27           8  29049.84    2.11         False
+Sweden          2133.23            4.0          2.0   20398.23            14           2  18265.00    8.56          True
+Austria        22821.16            7.0          2.0   39782.65            10           2  16961.49    0.74          True
+Ireland         6231.92            3.0          1.0   20402.12             4           1  14170.20    2.27          True
+UK              9403.22            9.0          7.0   22623.54            16           7  13220.32    1.41          True
+Belgium         7644.58            3.0          1.0   16083.68            10           2   8439.10    1.10          True
+Venezuela      12160.29            8.0          3.0   19993.69            16           3   7833.40    0.64          True
+Spain            422.75            1.0          1.0    8028.60            12           4   7605.85   17.99          True
+Argentina       1179.88            3.0          3.0    6302.50            10           3   5122.62    4.34          True
+Norway           200.00            1.0          1.0    3976.75             3           1   3776.75   18.88          True
+Switzerland     4936.20            2.0          2.0    8649.02             6           2   3712.81    0.75          True
+Italy           3236.52            5.0          3.0    6843.80            10           3   3607.29    1.11          True
+Poland             0.00            0.0          0.0    1865.10             4           1   1865.10     NaN          True
+Portugal        4098.44            4.0          2.0    4102.70             3           2      4.26    0.00          True
+France         20596.24           14.0          5.0   17929.43            22           8  -2666.81   -0.13         False
+Finland         5170.00            4.0          1.0    2257.00             5           2  -2913.00   -0.56          True
+Mexico          7279.11            4.0          3.0    3884.90             5           4  -3394.21   -0.47          True
+Canada         18981.95            8.0          3.0   11525.55             9           2  -7456.40   -0.39          True
+Denmark        17134.15            2.0          2.0    4284.00             3           1 -12850.15   -0.75          True
+
+Absolute change in each comparison and how many of 3 show growth:
+comparison    JanApr  Last6vsPrev6   NovApr  periods_growing
+Country                                                     
+Denmark     -12850.0        3524.0 -10739.0                1
+Canada       -7456.0        1674.0  -7129.0                1
+Mexico       -3394.0       -2860.0  -4289.0                0
+Finland      -2913.0       -1916.0   -347.0                0
+France       -2667.0       10930.0  -4690.0                1
+Portugal         4.0         906.0  -1063.0                2
+Poland        1865.0        1457.0   1691.0                3
+Italy         3607.0        8031.0   6881.0                3
+Switzerland   3713.0        9637.0   9794.0                3
+Norway        3777.0        3477.0   2453.0                3
+Argentina     5123.0        5499.0   5135.0                3
+Spain         7606.0        7442.0  10462.0                3
+Venezuela     7833.0       14312.0   8874.0                3
+Belgium       8439.0       16649.0  11384.0                3
+UK           13220.0       19934.0  11743.0                3
+Ireland      14170.0        7813.0  11816.0                3
+Austria      16961.0       33087.0   4675.0                3
+Sweden       18265.0        8461.0  22119.0                3
+Brazil       29050.0       28883.0  23688.0                3
+Germany      44075.0       22611.0  50798.0                3
+USA          46811.0       26841.0  43307.0                3
+
+Total change $195,240; top 4 countries (USA, Germany, Brazil, Sweden) = 71%
+
+========================================================================
+Q5.2 Inside the declining countries: which customers?
+========================================================================
+                                             before    after   change
+Country CompanyName                                                  
+Denmark Simons bistro                       13986.0      0.0 -13986.0
+Canada  Mère Paillarde                      12990.0      0.0 -12990.0
+Finland Wartian Herkku                       5170.0    270.0  -4900.0
+France  Blondel père et fils                 4793.0    730.0  -4063.0
+        La maison d'Asie                     4806.0   1260.0  -3546.0
+        Folies gourmandes                    2975.0      0.0  -2975.0
+Mexico  Tortuga Restaurante                  4150.0   1514.0  -2636.0
+        Pericles Comidas clásicas            2380.0   1196.0  -1184.0
+France  Victuailles en stock                 3197.0   2576.0   -620.0
+Canada  Laughing Bacchus Wine Cellars         348.0    187.0   -161.0
+Mexico  Antonio Moreno Taquería               749.0    660.0    -89.0
+        Ana Trujillo Emparedados y helados      0.0    514.0    514.0
+France  Du monde entier                         0.0    860.0    860.0
+        Bon app'                             4826.0   5888.0   1062.0
+Denmark Vaffeljernet                         3149.0   4284.0   1135.0
+Finland Wilman Kala                             0.0   1987.0   1987.0
+France  La corne d'abondance                    0.0   1992.0   1992.0
+        France restauration                     0.0   2252.0   2252.0
+        Spécialités du monde                    0.0   2371.0   2371.0
+Canada  Bottom-Dollar Markets                5644.0  11339.0   5694.0
+
+Last order date of customers that fell to zero:
+CompanyName
+Simons bistro        1998-05-06
+Mère Paillarde       1997-10-30
+Folies gourmandes    1997-12-22
+
+========================================================================
+Q5.3 How many customers stand behind each country? (all data)
+========================================================================
+             customers  orders    revenue  top_customer_share
+Country                                                      
+USA                 13     122  245678.26                0.42
+Germany             11     120  226916.58                0.49
+Austria              2      40  128003.84                0.82
+Brazil               9      84  108789.18                0.30
+France              10      76   80918.32                0.27
+UK                   7      56   58971.31                0.27
+Venezuela            4      46   56810.63                0.40
+Sweden               2      37   54495.14                0.54
+Canada               3      30   50196.29                0.58
+Ireland              1      19   49979.90                1.00
+Belgium              2      19   33824.86                0.71
+Denmark              2      18   32661.02                0.51
+Switzerland          2      18   31692.66                0.61
+Mexico               5      28   23582.08                0.46
+Finland              2      23   19250.05                0.81
+Spain                4      23   17983.20                0.64
+Italy                3      28   15770.16                0.46
+Portugal             2      14   12883.36                0.50
+Argentina            3      16    8119.10                0.43
+Norway               1       6    5735.15                1.00
+Poland               1       7    3531.95                1.00

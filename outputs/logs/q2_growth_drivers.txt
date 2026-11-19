@@ -1,0 +1,50 @@
+
+========================================================================
+Q2.1 Revenue = customers x orders per customer x revenue per order
+========================================================================
+                            comparison           basis  x_revenue  x_customers  x_orders_per_customer  x_revenue_per_order  share_of_growth_customers  share_of_growth_orders_per_customer  share_of_growth_revenue_per_order
+          Jan-Apr 1998 vs Jan-Apr 1997 constant prices       1.86         1.23                   1.69                 0.89                       0.33                                 0.85                              -0.18
+          Jan-Apr 1998 vs Jan-Apr 1997   actual prices       2.21         1.23                   1.69                 1.06                       0.26                                 0.66                               0.07
+Nov 1997-Apr 1998 vs Nov 1996-Apr 1997 constant prices       1.58         1.25                   1.51                 0.84                       0.50                                 0.90                              -0.40
+Nov 1997-Apr 1998 vs Nov 1996-Apr 1997   actual prices       1.90         1.25                   1.51                 1.01                       0.35                                 0.64                               0.01
+          Jul-Dec 1997 vs Jul-Dec 1996 constant prices       1.29         1.18                   1.24                 0.88                       0.66                                 0.85                              -0.51
+          Jul-Dec 1997 vs Jul-Dec 1996   actual prices       1.61         1.18                   1.24                 1.10                       0.35                                 0.45                               0.20
+
+Levels (constant prices):
+                            comparison  before_customers  after_customers  before_orders_per_customer  after_orders_per_customer  before_revenue_per_order  after_revenue_per_order
+          Jan-Apr 1998 vs Jan-Apr 1997                65               80                        1.89                       3.20                   1845.94                  1649.57
+Nov 1997-Apr 1998 vs Nov 1996-Apr 1997                67               84                        2.67                       4.02                   1903.12                  1589.42
+          Jul-Dec 1997 vs Jul-Dec 1996                66               78                        2.30                       2.86                   1712.27                  1505.02
+
+========================================================================
+Q2.2 Which customers drove the change? (Jan-Apr 1998 vs Jan-Apr 1997, constant prices)
+========================================================================
+                         customers     change  share_of_net_change
+group                                                             
+ordered in both periods         59  159505.50                 0.82
+ordered only in 1997             6  -31070.12                -0.16
+ordered only in 1998            21   66804.45                 0.34
+Of the 21 'only in 1998' customers, 1 placed their first-ever order in Jan-Apr 1998; the rest are returning customers.
+
+In-both customers: 39 grew, 20 shrank; orders per customer 1.92 -> 3.36
+Top 10 contributors = 76% of net change; customers with positive change: 60 of 86
+Growth excluding the 3 biggest contributors: +67% (all customers: +86%)
+
+Top 10 contributors:
+            rev_before  n_before  rev_after  n_after   change                    group                   CompanyName  Country
+CustomerID                                                                                                                   
+HANAR              0.0       0.0    23821.0      7.0  23821.0     ordered only in 1998                 Hanari Carnes   Brazil
+QUICK          17003.0       3.0    37217.0      8.0  20214.0  ordered in both periods                    QUICK-Stop  Germany
+SAVEA          13398.0       3.0    31980.0     10.0  18581.0  ordered in both periods            Save-a-lot Markets      USA
+KOENE           3990.0       4.0    19583.0      4.0  15593.0  ordered in both periods               Königlich Essen  Germany
+ERNSH          21457.0       5.0    35993.0      8.0  14536.0  ordered in both periods                  Ernst Handel  Austria
+HUNGO           6232.0       3.0    20402.0      4.0  14170.0  ordered in both periods  Hungry Owl All-Night Grocers  Ireland
+FOLKO            622.0       2.0    13644.0      9.0  13023.0  ordered in both periods                Folk och fä HB   Sweden
+WHITC           3423.0       3.0    14350.0      3.0  10927.0  ordered in both periods          White Clover Markets      USA
+GREAL              0.0       0.0     9942.0      5.0   9942.0     ordered only in 1998       Great Lakes Food Market      USA
+GODOS              0.0       0.0     6870.0      7.0   6870.0     ordered only in 1998           Godos Cocina Típica    Spain
+
+========================================================================
+Q2.3 Robustness: drop very large orders (top 1%)
+========================================================================
+Cutoff $10,919. Revenue x1.88; customers x1.25, frequency x1.67, order size x0.90

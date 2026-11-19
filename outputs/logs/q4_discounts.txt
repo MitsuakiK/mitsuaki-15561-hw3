@@ -1,0 +1,74 @@
+
+========================================================================
+Q4.0 Data used
+========================================================================
+Lines with standard rates: 2147 of 2155 (dropped 8 lines with 1-6% rates, all in order 11077)
+
+========================================================================
+Q4.1 Quantity per line by discount rate
+========================================================================
+rel_qty = quantity / median undiscounted quantity of the same product
+ rate  lines  mean_quantity  median_quantity  mean_rel_qty  ci_low  ci_high  discount_cost
+ 0.00   1317         21.715             18.0         1.248   1.193    1.307          0.000
+ 0.05    185         28.011             20.0         1.614   1.443    1.802       7769.336
+ 0.10    173         25.237             20.0         1.539   1.339    1.757      10166.571
+ 0.15    157         28.382             21.0         1.714   1.509    1.947      15442.266
+ 0.20    161         27.025             21.0         1.613   1.430    1.807      22295.276
+ 0.25    154         28.240             25.0         1.733   1.508    1.978      32979.522
+
+Kruskal-Wallis across 5/10/15/20/25%: p=0.342 (large p = no evidence that deeper discounts go with bigger quantities)
+Spearman correlation, rate vs relative quantity (discounted lines): rho=0.044, p=0.203
+Discounted vs undiscounted relative quantity: Mann-Whitney p=0.0000
+
+========================================================================
+Q4.2 Robustness: the same pattern in each year
+========================================================================
+OrderDate  1996  1997  1998
+Discount                   
+0.00       1.15  1.30  1.24
+0.05       1.59  1.62  1.62
+0.10       1.71  1.37  1.82
+0.15       1.61  1.65  1.86
+0.20       1.77  1.53  1.66
+0.25       1.79  1.70  1.75
+1996: Spearman rho=+0.095, p=0.248, n=151
+1997: Spearman rho=+0.039, p=0.412, n=437
+1998: Spearman rho=+0.014, p=0.828, n=242
+
+========================================================================
+Q4.3 How are discounts given? (per order vs per line)
+========================================================================
+Orders with any discount: 380 of 830; of these, 57% use one rate on every line
+Customers with >=20 lines: share of lines discounted ranges 0%-87%, median 46%
+           lines  share_disc  avg_rate_when_disc
+LastName                                        
+Fuller       241        0.32                0.14
+Leverling    321        0.32                0.15
+Callahan     260        0.36                0.16
+Davolio      345        0.39                0.13
+Peacock      420        0.40                0.15
+Suyama       168        0.41                0.13
+Dodsworth    107        0.44                0.16
+King         176        0.48                0.15
+Buchanan     117        0.50                0.13
+
+========================================================================
+Q4.4 Do customers come back sooner after a discounted order? (association only)
+========================================================================
+            orders  median_days_to_next  reorder_within_90d
+Discounted                                                 
+False          331                 54.0               0.640
+True           292                 36.0               0.829
+Fisher exact test on reorder-within-90-days: p=0.000
+Caution: frequent buyers may simply receive more discounts. Check within the same customer:
+Customers with both kinds of orders: 53; mean reorder-within-90d after discounted 78% vs undiscounted 66%; Wilcoxon p=0.049
+Across customers: number of orders vs share of orders discounted: rho=0.62, p=0.000
+
+========================================================================
+Q4.5 What do discounts cost, and what would a cap save? (hypothetical)
+========================================================================
+Total given away: $88,666 (6.5% of gross)
+Cap at 5%: affects 646 lines; saves $58,484 IF quantities stay the same
+Cap at 10%: affects 472 lines; saves $36,083 IF quantities stay the same
+Cap at 15%: affects 315 lines; saves $18,766 IF quantities stay the same
+Jan-Apr 1998 given away: $27,582

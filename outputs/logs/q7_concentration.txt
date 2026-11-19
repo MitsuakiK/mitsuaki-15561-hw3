@@ -1,0 +1,48 @@
+
+========================================================================
+Q7.1 Concentration over the whole period
+========================================================================
+dimension        basis  n  top1                  top1_name  top3  top10  n_for_80pct      hhi  equal_share_hhi
+customers      Revenue 89 0.087                      QUICK 0.252  0.450           34  336.911          112.360
+customers ConstRevenue 89 0.085                      QUICK 0.247  0.445           34  330.837          112.360
+ products      Revenue 77 0.112              Côte de Blaye 0.231  0.442           36  326.595          129.870
+ products ConstRevenue 77 0.114              Côte de Blaye 0.233  0.442           36  329.947          129.870
+suppliers      Revenue 29 0.121 Aux joyeux ecclésiastiques 0.329  0.662           15  619.054          344.828
+suppliers ConstRevenue 29 0.124 Aux joyeux ecclésiastiques 0.331  0.664           15  622.411          344.828
+countries      Revenue 21 0.194                        USA 0.474  0.838           10 1037.931          476.190
+countries ConstRevenue 21 0.194                        USA 0.471  0.837           10 1028.629          476.190
+HHI guide: below 1,500 = unconcentrated (US merger guideline scale).
+
+========================================================================
+Q7.2 Is concentration rising or falling? (by half-year)
+========================================================================
+      period  active_customers  top3_customers          top3_names  customer_hhi             top_product  top_product_share  cote_de_blaye_share
+     H2 1996                66           0.183 ERNSH, QUICK, RATTC       340.219           Côte de Blaye              0.120                0.120
+     H1 1997                73           0.237 QUICK, ERNSH, RATTC       369.364           Côte de Blaye              0.135                0.135
+     H2 1997                78           0.304 SAVEA, QUICK, ERNSH       437.272 Thüringer Rostbratwurst              0.070                0.034
+Jan-Apr 1998                80           0.249 QUICK, ERNSH, SAVEA       391.826           Côte de Blaye              0.159                0.159
+
+========================================================================
+Q7.3 The top product: who buys Côte de Blaye?
+========================================================================
+Supplier: Aux joyeux ecclésiastiques; list price $263.5; 24 order lines, 19 customers, revenue $141,397
+CompanyName
+QUICK-Stop                    0.162
+Hanari Carnes                 0.128
+Rattlesnake Canyon Grocery    0.119
+Great Lakes Food Market       0.080
+Simons bistro                 0.075
+Piccolo und mehr              0.060
+Order lines by half-year: {'H2 1996': 5, 'H1 1997': 6, 'H2 1997': 4, 'Jan-Apr 1998': 9}
+Its supplier's share of all revenue: 12.1%; products from this supplier: ['Chartreuse verte', 'Côte de Blaye']
+
+========================================================================
+Q7.4 Stress test: losing the biggest accounts (last 12 months, actual prices)
+========================================================================
+Lose top  1 customers: -$   82,374 (9.6% of last-12-month revenue)
+Lose top  3 customers: -$  234,036 (27.3% of last-12-month revenue)
+Lose top  5 customers: -$  298,865 (34.9% of last-12-month revenue)
+Lose top 10 customers: -$  417,083 (48.7% of last-12-month revenue)
+Top 5 customers (last 12 months): {'Save-a-lot Markets': 0.096, 'QUICK-Stop': 0.095, 'Ernst Handel': 0.082, 'Hungry Owl All-Night Grocers': 0.041, 'Hanari Carnes': 0.035}
+Lose Côte de Blaye: -$87,442 (10.2%)
+Countries where one customer is >= 70% of the country's revenue: {'Austria': 0.82, 'Belgium': 0.71, 'Finland': 0.81, 'Ireland': 1.0, 'Norway': 1.0, 'Poland': 1.0}

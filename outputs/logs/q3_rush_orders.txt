@@ -1,0 +1,60 @@
+
+========================================================================
+Q3.1 Late rate and shipping time by deadline window
+========================================================================
+        orders  late  late_rate  median_ship_days  mean_ship_days  customers  avg_order_revenue
+Window                                                                                         
+14          68    12      0.176               7.5          10.015         43           1969.317
+28         682    25      0.037               7.0           8.276         89           1496.528
+42          59     0        0.0               7.0           9.237         41           1445.928
+
+Fisher exact test, late rate 14-day vs 28-day: odds ratio 5.6, p=0.00004
+Mann-Whitney test, ship days 14-day vs 28-day: p=0.060 (large p = no evidence that short-deadline orders ship faster)
+Share of ALL shipped orders that take more than 14 days: 11.9% -> expected late rate for 14-day orders if they get no priority; observed 17.6%
+
+========================================================================
+Q3.2 Same comparison within shipper, year, and employee
+========================================================================
+
+--- Shipper ---
+                  mean       count     
+Window              14    28    14   28
+Shipper                                
+Federal Shipping  0.17  0.02    24  211
+Speedy Express    0.25  0.03    20  204
+United Package    0.12  0.05    24  267
+
+--- Year ---
+        mean       count     
+Window    14    28    14   28
+Year                         
+1996    0.08  0.05    12  131
+1997    0.18  0.05    33  345
+1998    0.22  0.01    23  206
+
+--- LastName ---
+           mean       count     
+Window       14    28    14   28
+LastName                        
+Buchanan   0.25   0.0     4   34
+Callahan    0.0  0.05     7   78
+Davolio     0.1  0.01    10  104
+Dodsworth  0.33  0.06     6   31
+Fuller     0.22  0.03     9   79
+King        0.5  0.05     2   61
+Leverling  0.11  0.04     9  113
+Peacock    0.18  0.06    17  127
+Suyama     0.25  0.04     4   55
+
+Permutation test within shipper x year strata: observed gap +14.0%, one-sided p=0.0002 (10000 shuffles)
+
+========================================================================
+Q3.3 What is at stake
+========================================================================
+14-day orders: 68 orders from 43 customers, revenue $133,914; 12 late, revenue $25,313
+Days late (14-day orders): {'count': 12.0, 'mean': 11.6, 'std': 6.7, 'min': 1.0, '25%': 6.8, '50%': 10.0, '75%': 17.2, 'max': 23.0}
+Ship days of late 14-day orders: [15.0, 19.0, 20.0, 21.0, 22.0, 23.0, 25.0, 30.0, 31.0, 32.0, 32.0, 37.0]
+If 14-day orders shipped within 10 days of order: 14 orders would need faster handling
+If 14-day orders shipped within 14 days of order: 12 orders would need faster handling
+Late share of all late orders that are 14-day orders: 32% (14-day orders are 8% of shipped orders)
+Robustness: drop the slowest 14-day order -> late rate 16.4%

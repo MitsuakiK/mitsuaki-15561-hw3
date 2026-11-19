@@ -1,0 +1,87 @@
+CustomerID,rev_before,n_before,rev_after,n_after,change,group,CompanyName,Country
+HANAR,0.0,0.0,23821.2,7.0,23821.2,ordered only in 1998,Hanari Carnes,Brazil
+QUICK,17003.135000000002,3.0,37217.315,8.0,20214.18,ordered in both periods,QUICK-Stop,Germany
+SAVEA,13398.398500000001,3.0,31979.71,10.0,18581.311499999996,ordered in both periods,Save-a-lot Markets,USA
+KOENE,3989.92,4.0,19582.773999999998,4.0,15592.853999999998,ordered in both periods,Königlich Essen,Germany
+ERNSH,21457.057500000003,5.0,35992.65,8.0,14535.592499999999,ordered in both periods,Ernst Handel,Austria
+HUNGO,6231.925,3.0,20402.120000000003,4.0,14170.195000000003,ordered in both periods,Hungry Owl All-Night Grocers,Ireland
+FOLKO,621.525,2.0,13644.067500000001,9.0,13022.542500000001,ordered in both periods,Folk och fä HB,Sweden
+WHITC,3422.7025,3.0,14350.15,3.0,10927.4475,ordered in both periods,White Clover Markets,USA
+GREAL,0.0,0.0,9942.135,5.0,9942.135,ordered only in 1998,Great Lakes Food Market,USA
+GODOS,0.0,0.0,6870.21,7.0,6870.21,ordered only in 1998,Godos Cocina Típica,Spain
+LINOD,2480.0,2.0,9117.09,7.0,6637.09,ordered in both periods,LINO-Delicateses,Venezuela
+BOTTM,5644.15,4.0,11338.55,8.0,5694.4,ordered in both periods,Bottom-Dollar Markets,Canada
+EASTC,3829.59,1.0,9296.685,4.0,5467.094999999999,ordered in both periods,Eastern Connection,UK
+BERGS,1511.7,2.0,6754.1625,5.0,5242.462500000001,ordered in both periods,Berglunds snabbköp,Sweden
+AROUT,509.625,1.0,5604.75,4.0,5095.125,ordered in both periods,Around the Horn,UK
+MAISD,0.0,0.0,4439.075,4.0,4439.075,ordered only in 1998,Maison Dewey,Belgium
+RICAR,2987.75,2.0,6998.525,4.0,4010.7749999999996,ordered in both periods,Ricardo Adocicados,Brazil
+SUPRD,7644.575,3.0,11644.6,6.0,4000.0250000000005,ordered in both periods,Suprêmes délices,Belgium
+TRADH,237.5,1.0,4234.264,3.0,3996.764,ordered in both periods,Tradição Hipermercados,Brazil
+SANTG,200.0,1.0,3976.75,3.0,3776.75,ordered in both periods,Santé Gourmet,Norway
+FRANK,1890.0,1.0,5078.7375,3.0,3188.7375,ordered in both periods,Frankenversand,Germany
+REGGC,888.0,2.0,3967.3,5.0,3079.3,ordered in both periods,Reggiani Caseifici,Italy
+DRACD,0.0,0.0,2722.76,2.0,2722.76,ordered only in 1998,Drachenblut Delikatessen,Germany
+OCEAN,399.0,1.0,3031.0,3.0,2632.0,ordered in both periods,Océano Atlántico Ltda.,Argentina
+PICCO,1364.1,2.0,3790.0,2.0,2425.9,ordered in both periods,Piccolo und mehr,Austria
+ISLAT,288.0,1.0,2684.6,2.0,2396.6,ordered in both periods,Island Trading,UK
+SPECD,0.0,0.0,2371.0,3.0,2371.0,ordered only in 1998,Spécialités du monde,France
+PRINI,1761.5,2.0,4044.9,2.0,2283.4,ordered in both periods,Princesa Isabel Vinhos,Portugal
+FRANR,0.0,0.0,2252.0600000000004,2.0,2252.0600000000004,ordered only in 1998,France restauration,France
+ALFKI,0.0,0.0,2250.5,3.0,2250.5,ordered only in 1998,Alfreds Futterkiste,Germany
+RATTC,17957.92,2.0,19982.55,5.0,2024.630000000001,ordered in both periods,Rattlesnake Canyon Grocery,USA
+LACOR,0.0,0.0,1992.05,4.0,1992.05,ordered only in 1998,La corne d'abondance,France
+WILMK,0.0,0.0,1987.0,4.0,1987.0,ordered only in 1998,Wilman Kala,Finland
+BLAUS,285.8,2.0,2160.0,3.0,1874.2,ordered in both periods,Blauer See Delikatessen,Germany
+RICSU,2622.0,1.0,4490.755,3.0,1868.755,ordered in both periods,Richter Supermarkt,Switzerland
+WOLZA,0.0,0.0,1865.1,4.0,1865.1,ordered only in 1998,Wolski  Zajazd,Poland
+CHOPS,2314.2,1.0,4158.26,3.0,1844.0600000000004,ordered in both periods,Chop-suey Chinese,Switzerland
+LONEP,0.0,0.0,1709.4,3.0,1709.4,ordered only in 1998,Lonesome Pine Restaurant,USA
+LILAS,3335.69,2.0,4833.4,3.0,1497.7099999999996,ordered in both periods,LILA-Supermercado,Venezuela
+OLDWO,2195.0,1.0,3615.2875,3.0,1420.2875,ordered in both periods,Old World Delicatessen,USA
+LETSS,0.0,0.0,1378.07,1.0,1378.07,ordered only in 1998,Let's Stop N Shop,USA
+CACTU,225.5,1.0,1576.8,4.0,1351.3,ordered in both periods,Cactus Comidas para llevar,Argentina
+FRANS,62.46,1.0,1296.0,2.0,1233.54,ordered in both periods,Franchi S.p.A.,Italy
+RANCH,555.38,1.0,1694.7,3.0,1139.3200000000002,ordered in both periods,Rancho grande,Argentina
+VAFFE,3148.648,1.0,4284.0,3.0,1135.3519999999999,ordered in both periods,Vaffeljernet,Denmark
+BONAP,4826.0,2.0,5887.860000000001,5.0,1061.8600000000006,ordered in both periods,Bon app',France
+OTTIK,1732.5,2.0,2737.2799999999997,3.0,1004.7799999999997,ordered in both periods,Ottilies Käseladen,Germany
+QUEEN,3409.3,2.0,4346.75,4.0,937.4499999999998,ordered in both periods,Queen Cozinha,Brazil
+DUMON,0.0,0.0,860.1,1.0,860.1,ordered only in 1998,Du monde entier,France
+ROMEY,0.0,0.0,726.89,2.0,726.89,ordered only in 1998,Romero y tomillo,Spain
+ANATR,0.0,0.0,514.4,1.0,514.4,ordered only in 1998,Ana Trujillo Emparedados y helados,Mexico
+SPLIR,610.3,1.0,1117.0,2.0,506.70000000000005,ordered in both periods,Split Rail Beer & Ale,USA
+SEVES,1296.0,1.0,1630.0,1.0,334.0,ordered in both periods,Seven Seas Imports,UK
+THECR,0.0,0.0,326.0,1.0,326.0,ordered only in 1998,The Cracker Box,USA
+BSBEV,2143.0,2.0,2431.0,3.0,288.0,ordered in both periods,B's Beverages,UK
+MORGK,0.0,0.0,245.0,1.0,245.0,ordered only in 1998,Morgenstern Gesundkost,Germany
+TRAIH,0.0,0.0,237.89999999999998,1.0,237.89999999999998,ordered only in 1998,Trail's Head Gourmet Provisioners,USA
+BOLID,0.0,0.0,224.0,1.0,224.0,ordered only in 1998,Bólido Comidas preparadas,Spain
+THEBI,0.0,0.0,69.6,1.0,69.6,ordered only in 1998,The Big Cheese,USA
+TOMSP,877.01,2.0,910.4,1.0,33.389999999999986,ordered in both periods,Toms Spezialitäten,Germany
+CONSH,985.0,2.0,931.5,1.0,-53.5,ordered in both periods,Consolidated Holdings,UK
+ANTON,749.0625,1.0,660.0,1.0,-89.0625,ordered in both periods,Antonio Moreno Taquería,Mexico
+HUNGC,128.0,1.0,0.0,0.0,-128.0,ordered only in 1997,Hungry Coyote Import Store,USA
+QUEDE,1496.8799999999999,1.0,1353.6,1.0,-143.27999999999997,ordered in both periods,Que Delícia,Brazil
+LAUGB,348.0,1.0,187.0,1.0,-161.0,ordered in both periods,Laughing Bacchus Wine Cellars,Canada
+LAZYK,184.0,1.0,0.0,0.0,-184.0,ordered only in 1997,Lazy K Kountry Store,USA
+GALED,422.75,1.0,207.5,2.0,-215.25,ordered in both periods,Galería del gastrónomo,Spain
+HILAA,6344.6,4.0,6043.2,6.0,-301.40000000000055,ordered in both periods,HILARIÓN-Abastos,Venezuela
+NORTS,352.0,1.0,45.0,1.0,-307.0,ordered in both periods,North/South,UK
+WANDK,1942.0,1.0,1485.8,1.0,-456.20000000000005,ordered in both periods,Die Wandernde Kuh,Germany
+VICTE,3196.76,3.0,2576.45,3.0,-620.3100000000004,ordered in both periods,Victuailles en stock,France
+MAGAA,2286.055,2.0,1580.5,3.0,-705.5549999999998,ordered in both periods,Magazzini Alimentari Riuniti,Italy
+FAMIA,807.6199999999999,2.0,0.0,0.0,-807.6199999999999,ordered only in 1997,Familia Arquibaldo,Brazil
+GOURL,1275.0,1.0,405.35,2.0,-869.65,ordered in both periods,Gourmet Lanchonetes,Brazil
+COMMI,1410.0,2.0,513.75,2.0,-896.25,ordered in both periods,Comércio Mineiro,Brazil
+WELLI,2134.8,1.0,1135.25,4.0,-999.5500000000002,ordered in both periods,Wellington Importadora,Brazil
+PERIC,2380.0,2.0,1196.0,1.0,-1184.0,ordered in both periods,Pericles Comidas clásicas,Mexico
+FURIB,2336.9375,2.0,57.8,1.0,-2279.1375,ordered in both periods,Furia Bacalhau e Frutos do Mar,Portugal
+LEHMS,4045.24,2.0,1449.9325,3.0,-2595.3075,ordered in both periods,Lehmanns Marktstand,Germany
+TORTU,4150.05,1.0,1514.5,2.0,-2635.55,ordered in both periods,Tortuga Restaurante,Mexico
+FOLIG,2975.2,2.0,0.0,0.0,-2975.2,ordered only in 1997,Folies gourmandes,France
+LAMAI,4805.635,5.0,1259.9099999999999,3.0,-3545.7250000000004,ordered in both periods,La maison d'Asie,France
+BLONP,4792.65,2.0,730.0,1.0,-4062.6499999999996,ordered in both periods,Blondel père et fils,France
+WARTH,5170.0,4.0,270.0,1.0,-4900.0,ordered in both periods,Wartian Herkku,Finland
+MEREP,12989.800000000001,3.0,0.0,0.0,-12989.800000000001,ordered only in 1997,Mère Paillarde,Canada
+SIMOB,13985.5,1.0,0.0,0.0,-13985.5,ordered only in 1997,Simons bistro,Denmark

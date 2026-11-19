@@ -1,0 +1,47 @@
+
+========================================================================
+Q6.1 At-risk customers as of 1998-05-06 (>= 3 orders, silent >= 2x their usual gap and >= 60 days)
+========================================================================
+Customers: 89; with >= 3 orders: 86; with 1-2 orders: 3
+                               company country  orders last_order  usual_gap  days_since  overdue_ratio  revenue_12m
+CustomerID                                                                                                          
+BERGS               Berglunds snabbköp  Sweden      18 1998-03-04       26.0          63            2.4      16204.0
+MEREP                   Mère Paillarde  Canada      13 1997-10-30       17.5         188           10.7      12912.0
+SEVES               Seven Seas Imports      UK       9 1998-02-04       29.0          91            3.1       7170.0
+VICTE             Victuailles en stock  France      10 1998-01-23       19.0         103            5.4       5828.0
+BLONP             Blondel père et fils  France      11 1998-01-12       42.5         114            2.7       4715.0
+FAMIA               Familia Arquibaldo  Brazil       7 1997-10-31       63.5         187            2.9       2377.0
+HUNGC       Hungry Coyote Import Store     USA       5 1997-09-08       37.5         240            6.4       2181.0
+VINET        Vins et alcools Chevalier  France       4 1997-11-12       27.0         175            6.5        380.0
+
+At-risk: 8 customers, 12-month revenue $51,767 (6.0% of all 12-month revenue)
+Customers with only 1-2 orders:
+                               company  orders last_order  revenue_12m
+CustomerID                                                            
+CENTC       Centro comercial Moctezuma       1 1996-07-18          0.0
+GROSR             GROSELLA-Restaurante       2 1997-12-18        387.5
+LAZYK             Lazy K Kountry Store       2 1997-05-22        210.0
+
+========================================================================
+Q6.2 Sensitivity: how the list changes with the threshold
+========================================================================
+ratio>=1.5, days>=45:  8 customers, $   51,767; overlap with base list 8/8
+ratio>=1.5, days>=60:  8 customers, $   51,767; overlap with base list 8/8
+ratio>=1.5, days>=90:  7 customers, $   35,563; overlap with base list 7/8
+ratio>=2.0, days>=45:  8 customers, $   51,767; overlap with base list 8/8
+ratio>=2.0, days>=60:  8 customers, $   51,767; overlap with base list 8/8
+ratio>=2.0, days>=90:  7 customers, $   35,563; overlap with base list 7/8
+ratio>=3.0, days>=45:  5 customers, $   28,471; overlap with base list 5/8
+ratio>=3.0, days>=60:  5 customers, $   28,471; overlap with base list 5/8
+ratio>=3.0, days>=90:  5 customers, $   28,471; overlap with base list 5/8
+
+========================================================================
+Q6.3 Backtest: did flagged customers really go quiet? (next 120 days after each cutoff)
+========================================================================
+    cutoff  flagged  customers  share_ordered_next
+1997-08-06    False         45                0.80
+1997-08-06     True         12                0.58
+1997-11-06    False         50                0.86
+1997-11-06     True         16                0.81
+1998-01-06    False         60                0.93
+1998-01-06     True         15                0.87
